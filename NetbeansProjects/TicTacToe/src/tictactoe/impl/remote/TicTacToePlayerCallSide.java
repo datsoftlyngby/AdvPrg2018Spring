@@ -5,42 +5,31 @@
  */
 package tictactoe.impl.remote;
 
-import dk.tobiasgrundtvig.util.socket.SocketConnection;
 import java.io.IOException;
 import tictactoe.TicTacToeBoard;
 import tictactoe.TicTacToePlayer;
+import tictactoe.remote.TicTacToeConnection;
 
 /**
  *
- * @author tgrun
+ * @author Tobias
  */
-public class ServerSide implements TicTacToePlayer
+public class TicTacToePlayerCallSide implements TicTacToePlayer
 {
-    private final SocketConnection conn;
 
-    public ServerSide(SocketConnection conn)
+    private TicTacToeConnection conn;
+
+    public TicTacToePlayerCallSide(TicTacToeConnection conn)
     {
         this.conn = conn;
     }
-    
-    public void sendMessage(String message)
-    {
-        try
-        {
-            conn.writeInt(0);
-            conn.writeUTF(message);
-        } catch (IOException ex)
-        {
-            throw new RuntimeException(ex);
-        }
-    }
-    
+   
     @Override
     public void startNewGame(int playerID)
     {
         try
         {
-            conn.writeInt(1);
+            conn.writeString("startNewGame");
             conn.writeInt(playerID);
         } catch (IOException ex)
         {
@@ -53,16 +42,9 @@ public class ServerSide implements TicTacToePlayer
     {
         try
         {
-            conn.writeInt(2);
-            for(int i = 0; i < 9; ++i)
-            {
-                conn.writeInt(board.get(i));
-            }
-            conn.writeInt(validPositions.length);
-            for(int i = 0; i < validPositions.length; ++i)
-            {
-                conn.writeInt(validPositions[i]);
-            }
+            conn.writeString("takeTurn");
+            conn.writeBoard(board);
+            conn.writeIntArray(validPositions);
             return conn.readInt();
         } catch (IOException ex)
         {
@@ -75,13 +57,12 @@ public class ServerSide implements TicTacToePlayer
     {
         try
         {
-            conn.writeInt(3);
+            conn.writeString("endGame");
             conn.writeInt(result);
-            conn.close();
         } catch (IOException ex)
         {
             throw new RuntimeException(ex);
         }
     }
-
+    
 }

@@ -5,12 +5,14 @@
  */
 package tictactoe.impl.remote;
 
+import tictactoe.impl.remote.*;
 import dk.tobiasgrundtvig.util.socket.ConnectionHandler;
 import dk.tobiasgrundtvig.util.socket.SocketConnection;
 import dk.tobiasgrundtvig.util.socket.impl.Server;
 import tictactoe.TicTacToeGameCtrl;
 import tictactoe.TicTacToePlayer;
 import tictactoe.impl.TicTacToeGameCtrlImpl;
+import tictactoe.remote.TicTacToeConnectionImpl;
 
 /**
  *
@@ -18,7 +20,7 @@ import tictactoe.impl.TicTacToeGameCtrlImpl;
  */
 public class TicTacToeServer implements ConnectionHandler
 {
-    private ServerSide p1;
+    private TicTacToePlayerCallSide p1;
     
     public static void main(String[] args)
     {
@@ -36,14 +38,14 @@ public class TicTacToeServer implements ConnectionHandler
     {
         if(p1 == null)
         {
-            p1 = new ServerSide(conn);
-            p1.sendMessage("Connected, waiting for another player to connect...");
+            p1 = new TicTacToePlayerCallSide(new TicTacToeConnectionImpl(conn));
+            //p1.sendMessage("Connected, waiting for another player to connect...");
         }
         else
         {
-            ServerSide p2 = new ServerSide(conn);
-            p2.sendMessage("Connected, starting game...");
-            p1.sendMessage("Starting game...");
+            TicTacToePlayerCallSide p2 = new TicTacToePlayerCallSide(new TicTacToeConnectionImpl(conn));
+            //p2.sendMessage("Connected, starting game...");
+            //p1.sendMessage("Starting game...");
             TicTacToeGameCtrl game = new TicTacToeGameCtrlImpl();
             TicTacToePlayer tmp = p1;
             new Thread(() -> game.playGame(tmp, p2)).start();
