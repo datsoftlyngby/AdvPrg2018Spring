@@ -36,6 +36,7 @@ public class TicTacToeServer implements ConnectionHandler
     @Override
     public void handleConnection(SocketConnection conn)
     {
+        System.out.println("Handling a new connection");
         if(p1 == null)
         {
             p1 = new TicTacToePlayerCallSide(new TicTacToeConnectionImpl(conn));
