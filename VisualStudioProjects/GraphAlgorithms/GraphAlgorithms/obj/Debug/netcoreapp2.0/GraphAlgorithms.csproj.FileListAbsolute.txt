@@ -1,0 +1,8 @@
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\bin\Debug\netcoreapp2.0\GraphAlgorithms.deps.json
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\bin\Debug\netcoreapp2.0\GraphAlgorithms.runtimeconfig.json
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\bin\Debug\netcoreapp2.0\GraphAlgorithms.runtimeconfig.dev.json
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\bin\Debug\netcoreapp2.0\GraphAlgorithms.dll
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\obj\Debug\netcoreapp2.0\GraphAlgorithms.csprojResolveAssemblyReference.cache
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\obj\Debug\netcoreapp2.0\GraphAlgorithms.csproj.CoreCompileInputs.cache
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\obj\Debug\netcoreapp2.0\GraphAlgorithms.AssemblyInfoInputs.cache
+C:\Users\Tobias\EFIF\OneDrive - EFIF\CBA\F2018\AdvPrg\AdvPrg2018Spring\VisualStudioProjects\GraphAlgorithms\GraphAlgorithms\obj\Debug\netcoreapp2.0\GraphAlgorithms.AssemblyInfo.cs

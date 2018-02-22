@@ -6,6 +6,7 @@
 package humaninterface.impl;
 
 import humaninterface.TextualInterface;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -91,6 +92,12 @@ public class ConsoleTextualInterface implements TextualInterface
         System.out.println("\n\n");
         int tmp = askForInteger("Please choose one: ", 1, choices.length);
         return tmp-1;
+    }
+
+    @Override
+    public void close() throws IOException
+    {
+        System.out.println("Goodbye!");
     }
     
 }

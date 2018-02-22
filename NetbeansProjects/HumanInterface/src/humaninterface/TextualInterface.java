@@ -5,11 +5,13 @@
  */
 package humaninterface;
 
+import java.io.Closeable;
+
 /**
  *
  * @author Tobias
  */
-public interface TextualInterface
+public interface TextualInterface extends Closeable
 {
     public void sendMessage(String msg);
     public String askForString(String question);
