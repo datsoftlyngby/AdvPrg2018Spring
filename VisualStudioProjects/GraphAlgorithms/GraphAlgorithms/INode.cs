@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GraphAlgorithms
 {
-    interface INode<N> : IEnumerable<IEdge<N>> where N : INode<N>
+    public interface INode<N> : IEnumerable<IEdge<N>> where N : INode<N>
     {
     }
 }
