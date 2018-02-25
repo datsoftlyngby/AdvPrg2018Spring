@@ -1,14 +1,22 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "signature": "82d89c99e785a4dafc90ef69e26e35b3b268bf85"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "GraphAlgorithms/1.0.0": {
+        "dependencies": {
+          "C5": "2.5.3"
+        },
         "runtime": {
           "GraphAlgorithms.dll": {}
+        }
+      },
+      "C5/2.5.3": {
+        "runtime": {
+          "lib/netstandard1.0/C5.dll": {}
         }
       }
     }
@@ -18,6 +26,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "C5/2.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0entkPMY08efpo9w95vu8EoTIIs/DdGHxSQo1KxZhXYLWxnNb5UA2OCW4rioSm7L0ZSysQV1tiLIqzyZkscqoQ==",
+      "path": "c5/2.5.3",
+      "hashPath": "c5.2.5.3.nupkg.sha512"
     }
   }
 }
