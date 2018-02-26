@@ -9,6 +9,7 @@ namespace GraphAlgorithms.Test
     {
         static void Main(string[] args)
         {
+            IPathfinding pf = new Pathfinding();
             int width = 10;
             int height = 10;
 
@@ -73,12 +74,24 @@ namespace GraphAlgorithms.Test
 
             Console.WriteLine(map + "\n\n");
 
-            IEnumerable<IPathNode<TestNode>> path = AStar.GetShortestPath(grid[0, 0], grid[9, 9], new TestHeuristic());
+            IEnumerable<IPathNode<TestNode>> path = pf.GetShortestPath(grid[0, 0], grid[9, 9], new TestHeuristic());
             foreach (IPathNode<TestNode> n in path)
             {
                 Console.WriteLine(n.GetNode());
             }
             Console.ReadLine();
+
+            Console.WriteLine(map + "\n\n");
+            float maxCost = 20;
+            Console.WriteLine("Reachable within " + maxCost);
+            IEnumerable<IPathNode<TestNode>> reachable = pf.GetReachableNodes(grid[0, 0], maxCost);
+            foreach (IPathNode<TestNode> n in reachable)
+            {
+                Console.WriteLine(n.GetNode() + " cost: " + n.GetCost());
+            }
+            Console.ReadLine();
+
+
         }
     }
 }
