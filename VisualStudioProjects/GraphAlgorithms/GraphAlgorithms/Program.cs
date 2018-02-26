@@ -73,10 +73,10 @@ namespace GraphAlgorithms.Test
 
             Console.WriteLine(map + "\n\n");
 
-            IEnumerable<TestNode> path = AStar.GetShortestPath(grid[0, 0], grid[9, 9], new TestHeuristic());
-            foreach (TestNode n in path)
+            IEnumerable<IPathNode<TestNode>> path = AStar.GetShortestPath(grid[0, 0], grid[9, 9], new TestHeuristic());
+            foreach (IPathNode<TestNode> n in path)
             {
-                Console.WriteLine(n);
+                Console.WriteLine(n.GetNode());
             }
             Console.ReadLine();
         }

@@ -5,7 +5,7 @@ namespace GraphAlgorithms
 {
     class AStar
     {
-        public static IEnumerable<N> GetShortestPath<N>(N start, N goal, IHeuristic<N> heuristic) where N : INode<N>
+        public static IEnumerable<IPathNode<N>> GetShortestPath<N>(N start, N goal, IHeuristic<N> heuristic) where N : INode<N>
         {
             C5.IDictionary<N, PathNode<N>> nodeDictionary = new C5.HashDictionary<N, PathNode<N>>();
             C5.IPriorityQueue<PathNode<N>> openSet = new C5.IntervalHeap<PathNode<N>>(new PathNodeComparer<N>(), C5.MemoryType.Normal);
@@ -55,10 +55,10 @@ namespace GraphAlgorithms
                 curNode = openSet.DeleteMin();
                 if (curNode.node.Equals(goal))
                 {
-                    C5.ArrayList<N> res = new C5.ArrayList<N>(C5.MemoryType.Normal);
+                    C5.ArrayList<IPathNode<N>> res = new C5.ArrayList<IPathNode<N>>(C5.MemoryType.Normal);
                     do
                     {
-                        res.Add(curNode.node);
+                        res.Add(curNode);
                         curNode = curNode.prev;
                     } while (curNode != null);
                     res.Reverse();
@@ -85,17 +85,17 @@ namespace GraphAlgorithms
                 this.h = 0;
             }
 
-            public float getCost()
+            public float GetCost()
             {
                 return g;
             }
 
-            public N getNode()
+            public N GetNode()
             {
                 return node;
             }
 
-            public IPathNode<N> getPrevious()
+            public IPathNode<N> GetPrevious()
             {
                 return prev;
             }
