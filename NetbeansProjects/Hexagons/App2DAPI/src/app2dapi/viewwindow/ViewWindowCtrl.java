@@ -1,0 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package app2dapi.viewwindow;
+
+import app2dapi.geometry.G2D.Point2D;
+
+/**
+ *
+ * @author Tobias Grundtvig
+ */
+public interface ViewWindowCtrl
+{
+    public void setWindowWidth(double width);
+    public void setWindowHeight(double height);
+    public void setWindowRotation(double rotation);
+    public void setWorldMatchPoint(Point2D point);
+    public void setHUDMatchPoint(Point2D point);
+    public Point2D getHUDMatchPoint();
+    public Point2D getWorldMatchPoint();
+    public double getWindowWidth();
+    public double getWindowHeight();
+    public double getWindowRotation();
+    public Point2D fromHUDToWorld(Point2D pointOnHUD);
+    public Point2D fromWorldtoHUD(Point2D pointInWorld);
+}
