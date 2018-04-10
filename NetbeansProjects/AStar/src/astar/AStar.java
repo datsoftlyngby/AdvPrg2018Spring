@@ -24,8 +24,12 @@ import priorityqueue.PriorityQueueImpl;
 public class AStar
 {
 
-    public static <N extends Node<N>> Iterable<N> getShortestPath(N start, N goal, Heuristic<N> heuristic)
+    public static <N extends Node<N>> Iterable<N> getShortestPath(N start, N goal, Heuristic<N> heuristic, float maxCost)
     {
+        if(start.equals(goal))
+        {
+            
+        }
         Map<N, NodeData> nodeDataMap = new HashMap<>();
         PriorityQueue<NodeData> openSet = new PriorityQueueImpl<>(new Order());
         Set<N> closedSet = new HashSet<>();

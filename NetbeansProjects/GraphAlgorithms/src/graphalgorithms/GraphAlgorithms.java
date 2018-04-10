@@ -14,4 +14,6 @@ public interface GraphAlgorithms
     public Path getShortestPath(Node begin, Node end, Heuristic h);
     public Path getShortestPath(Node begin, Node end);
     public Iterable<Node> getReachableNodes(Node begin, double maxCost);
+    //More to come...
+    // Minimum spanning tree
 }
