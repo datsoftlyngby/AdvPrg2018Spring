@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistence.examples;
+package persistence.examples.impl;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Date;
 import persistence.Serializer;
+import persistence.examples.Address;
+import persistence.examples.Person;
+import persistence.examples.PersonFactory;
 
 /**
  *
@@ -17,9 +20,10 @@ import persistence.Serializer;
  */
 public class PersonSerializer implements Serializer<Person>
 {
+    private static Serializer<Person> instance;
     private final PersonFactory factory;
 
-    public PersonSerializer(PersonFactory factory)
+    private PersonSerializer(PersonFactory factory)
     {
         this.factory = factory;
     }
@@ -31,6 +35,7 @@ public class PersonSerializer implements Serializer<Person>
         out.writeUTF(dataObj.getFirstName());
         out.writeUTF(dataObj.getLastName());
         out.writeLong(dataObj.getBirthDate().getTime());
+        AddressSerializer.getInstance().serialize(dataObj.getAddress(), out);
     }
 
     @Override
@@ -39,7 +44,17 @@ public class PersonSerializer implements Serializer<Person>
         String firstName = in.readUTF();
         String lastName = in.readUTF();
         Date birthDate = new Date(in.readLong());
-        return factory.newPerson(firstName, lastName, birthDate);
+        Address address = AddressSerializer.getInstance().deserialize(in);
+        return factory.newPerson(firstName, lastName, birthDate, address);
+    }
+    
+    public static Serializer<Person> getInstance()
+    {
+        if(instance == null)
+        {
+            instance = new PersonSerializer(PersonFactoryImpl.getInstance());
+        }
+        return instance;
     }
     
 }

@@ -16,4 +16,6 @@ public interface Person
     public String getFirstName();
     public String getLastName();
     public Date getBirthDate();
+    public Address getAddress();
+    public void setAddress(Address address);
 }

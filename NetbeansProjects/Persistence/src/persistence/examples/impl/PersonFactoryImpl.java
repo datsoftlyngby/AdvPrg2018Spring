@@ -6,6 +6,7 @@
 package persistence.examples.impl;
 
 import java.util.Date;
+import persistence.examples.Address;
 import persistence.examples.Person;
 import persistence.examples.PersonFactory;
 
@@ -15,11 +16,26 @@ import persistence.examples.PersonFactory;
  */
 public class PersonFactoryImpl implements PersonFactory
 {
+    private static PersonFactory instance;
 
-    @Override
-    public Person newPerson(String firstName, String lastName, Date birthdate)
+    private PersonFactoryImpl()
     {
-        return new PersonImpl(firstName, lastName, birthdate);
+    }
+    
+    
+    @Override
+    public Person newPerson(String firstName, String lastName, Date birthdate, Address address)
+    {
+        return new PersonImpl(firstName, lastName, birthdate, address);
+    }
+    
+    public static PersonFactory getInstance()
+    {
+        if(instance == null)
+        {
+            instance = new PersonFactoryImpl();
+        }
+        return instance;
     }
     
     private static class PersonImpl implements Person
@@ -27,12 +43,14 @@ public class PersonFactoryImpl implements PersonFactory
         private final String firstName;
         private final String lastName;
         private final Date birthDate;
+        private Address address;
 
-        public PersonImpl(String firstName, String lastName, Date birthDate)
+        public PersonImpl(String firstName, String lastName, Date birthDate, Address address)
         {
             this.firstName = firstName;
             this.lastName = lastName;
             this.birthDate = birthDate;
+            this.address = address;
         }
         
         
@@ -53,11 +71,23 @@ public class PersonFactoryImpl implements PersonFactory
         {
             return birthDate;
         }
+
+        @Override
+        public Address getAddress()
+        {
+            return address;
+        }
+
+        @Override
+        public void setAddress(Address address)
+        {
+            this.address = address;
+        }
         
         @Override
         public String toString()
         {
-            return firstName + " " + lastName + " " + birthDate;
+            return firstName + " " + lastName + " " + birthDate + " " + address;
         }
     }
 }

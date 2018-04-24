@@ -5,13 +5,13 @@
  */
 package persistence.examples;
 
-import java.util.Date;
-
 /**
  *
  * @author Tobias
  */
-public interface PersonFactory
+public interface Address
 {
-    public Person newPerson(String firstName, String lastName, Date birthdate, Address address);
+    public String getStreet();
+    public int getNumber();
+    public int getZipCode();
 }
