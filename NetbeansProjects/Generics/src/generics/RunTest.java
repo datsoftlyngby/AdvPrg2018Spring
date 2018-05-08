@@ -20,5 +20,22 @@ public class RunTest
         
         algo.sort(strings);
         algo2.sort(strings);
+        
+        Foo[] foos = (Foo[]) new Object[2];
+        foos[0] = new Foo();
+        foos[1] = new Foo();
+        
+        algo.sort(foos);
+    }
+    
+    private static class Foo implements Comparable<Foo>
+    {
+
+        @Override
+        public int compareTo(Foo o)
+        {
+            return 0;
+        }
+        
     }
 }

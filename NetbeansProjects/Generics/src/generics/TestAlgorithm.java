@@ -5,6 +5,7 @@
  */
 package generics;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -14,21 +15,16 @@ import java.util.Comparator;
 public class TestAlgorithm implements SortingAlgorithm
 {
     
-    public void sort(String[] array)
-    {
-        System.out.println("public void sort(String[] array)");
-    }
-
     @Override
     public <E> void sort(E[] array, Comparator<E> comp)
     {
-        System.out.println("public <E> void sort(E[] array, Comparator<E> comp)");  
+        Arrays.sort(array, comp);
     }
 
     @Override
     public <E extends Comparable<E>> void sort(E[] array)
     {
-        System.out.println("public <E extends Comparable<E>> void sort(E[] array)");
+        Arrays.sort(array);
     }
     
 }

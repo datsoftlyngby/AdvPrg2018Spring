@@ -17,7 +17,16 @@ public class Generics
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
+        Stack<String> stack = new StackImpl<>();
+        
+        stack.push("Element 1");
+        stack.push("Element 2");
+        stack.push("Element 3");
+        stack.push("Element 4");
+        while(!stack.isEmpty())
+        {
+            System.out.println(stack.pop());
+        }
     }
     
 }
